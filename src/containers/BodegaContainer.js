@@ -46,11 +46,12 @@ export default class BodegaContainer extends React.Component {
 
     logCatEncounter = (e) =>{
         debugger
+        e.preventDefault()
         if (e.target.className == "mapboxgl-popup-close-button") {
             // close the box
             console.log("a close button was clicked")
         }
-        e.preventDefault()
+        console.log(e)
         console.log("I was clicked")
     }
 
@@ -68,6 +69,9 @@ export default class BodegaContainer extends React.Component {
                         <Popup
                             latitude={this.state.selectedBodega.attributes.latitude}
                             longitude={this.state.selectedBodega.attributes.longitude}
+                            closeButton={true}
+                            closeOnClick={false}
+                            onClose={() => this.clearSelected()}
                         >
                             <div>
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
