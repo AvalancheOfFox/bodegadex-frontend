@@ -13,7 +13,7 @@ export default class BodegaContainer extends React.Component {
         showModal: false
     }
 
-
+// initial fetch to backend to get bodegas
     componentDidMount() {
         fetch(`http://localhost:3000/bodegas`)
         .then(res => res.json())
@@ -22,17 +22,14 @@ export default class BodegaContainer extends React.Component {
         }))
     }
 
-
+// opens/closes our modal
     handleModalClick = (e) => {
-        debugger
         e.preventDefault()
         this.setState({
             showModal: !this.state.showModal
         })
     }
-
-
-
+// creates our markers from fetched bodegas
     makeBodegaMarkers = () => {
     return this.state.bodegas.map((bodega) => 
             <Marker key={bodega.id}
@@ -47,38 +44,34 @@ export default class BodegaContainer extends React.Component {
                     <img src = {shopImg} alt="Bodega Location" />
                 </button>
             </Marker>
-            ) //end of mBM map
+            ) 
         
         } //end of makeBodegaMarkers
 
+        // sets our selectedBodega in state
     setSelectedBodega = (bodega, e) => {
         e.preventDefault()
         this.setState({
             selectedBodega: bodega
         })
     }
-
-    logCatEncounter = (e) =>{
-        debugger
-        e.preventDefault()
-        console.log("I was clicked")
-    }
-
+// clears our selectedBodega state to null
     clearSelected =() =>{
         this.setState({
             selectedBodega: null
         })
     }
 
-  
     render() {
         return (
             <div>
             <ReactModal 
-                    isOpen={this.state.showModal}
-                    contentLabel="Log A Cat Modal"
-                    shouldCloseOnEsc={true}
-            />
+                isOpen={this.state.showModal}
+                contentLabel="Log A Cat Modal"
+                shouldCloseOnEsc={true}
+            >
+                <p>x</p>
+            </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
                     this.state.selectedBodega && (
