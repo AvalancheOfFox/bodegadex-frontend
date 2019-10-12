@@ -70,7 +70,9 @@ export default class BodegaContainer extends React.Component {
                 contentLabel="Log A Cat Modal"
                 shouldCloseOnEsc={true}
             >
-                <p>x</p>
+                <button onClick={(e) => this.handleModalClick(e)}>
+                    Back To Map
+                </button>
             </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
@@ -85,7 +87,7 @@ export default class BodegaContainer extends React.Component {
                             <div>
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
                                 <h5>Cats!</h5>
-                                <ul>{this.state.selectedBodega.attributes.cats.map((cat) => cat.name)}</ul>
+                                <ul>{(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => cat.name) : <p>This store has no cats.</p>}</ul>
                                 <button className="logButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
                             </div>
                         </Popup>
