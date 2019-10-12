@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import './App.css';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import BodegaContainer from './containers/BodegaContainer';
+import './App.css';
 
 
 export default function App() {
+
 
   const [viewport, setViewport] = useState({
     latitude: 40.700687,  //NOT IN DEGREES! 
@@ -14,8 +15,11 @@ export default function App() {
     width: '100vw'
   })
  
+
+ 
   return (
     <div>
+    
       <ReactMapGL
       {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}

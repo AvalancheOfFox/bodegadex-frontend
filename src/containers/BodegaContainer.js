@@ -1,12 +1,16 @@
 import React, { Component, useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import shopImg from "../svgs/xyz.svg";
+import ReactModal from 'react-modal'; 
+
+
 
 
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
-        selectedBodega: null
+        selectedBodega: null,
+        showModal: false
     }
 
 
@@ -17,6 +21,16 @@ export default class BodegaContainer extends React.Component {
             bodegas: data.data
         }))
     }
+
+
+    handleModalClick = (e) => {
+        debugger
+        e.preventDefault()
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
 
 
     makeBodegaMarkers = () => {
@@ -47,11 +61,6 @@ export default class BodegaContainer extends React.Component {
     logCatEncounter = (e) =>{
         debugger
         e.preventDefault()
-        if (e.target.className == "mapboxgl-popup-close-button") {
-            // close the box
-            console.log("a close button was clicked")
-        }
-        console.log(e)
         console.log("I was clicked")
     }
 
@@ -61,8 +70,15 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
+  
     render() {
         return (
+            <div>
+            <ReactModal 
+                    isOpen={this.state.showModal}
+                    contentLabel="Log A Cat Modal"
+                    shouldCloseOnEsc={true}
+            />
            <div>{this.makeBodegaMarkers()}
                 {
                     this.state.selectedBodega && (
@@ -77,11 +93,12 @@ export default class BodegaContainer extends React.Component {
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
                                 <h5>Cats!</h5>
                                 <ul>{this.state.selectedBodega.attributes.cats.map((cat) => cat.name)}</ul>
-                                <button className="logButton" onClick={(e) => this.logCatEncounter(e)}>Log A New Sighting!</button>
+                                <button className="logButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
                             </div>
                         </Popup>
                     )
                 }</div>
+            </div>
         );
     }
 }
