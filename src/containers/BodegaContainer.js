@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import shopImg from "../svgs/xyz.svg";
 import ReactModal from 'react-modal'; 
+import LogASighting from '../components/LogASighting'
 
 
 
@@ -68,11 +69,13 @@ export default class BodegaContainer extends React.Component {
             <ReactModal 
                 isOpen={this.state.showModal}
                 contentLabel="Log A Cat Modal"
+                shouldFocusAfterRender={true}
                 shouldCloseOnEsc={true}
             >
                 <button onClick={(e) => this.handleModalClick(e)}>
                     Back To Map
                 </button>
+                <LogASighting />
             </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
