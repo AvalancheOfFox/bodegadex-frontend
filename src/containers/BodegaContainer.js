@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import shopImg from "../svgs/xyz.svg";
 import ReactModal from 'react-modal'; 
 import LogASighting from '../components/LogASighting'
+import NewCatForm from '../components/NewCatForm'
 
 
 
@@ -11,7 +12,8 @@ export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
         selectedBodega: null,
-        showModal: false
+        showModal: false,
+        showNewCatModal: false
     }
 
 // initial fetch to backend to get bodegas
@@ -23,13 +25,22 @@ export default class BodegaContainer extends React.Component {
         }))
     }
 
-// opens/closes our modal
+// opens/closes our new sightings modal
     handleModalClick = (e) => {
         e.preventDefault()
         this.setState({
             showModal: !this.state.showModal
         })
     }
+
+// opens/closes our new cat modal
+    newCatModalClick = (e) => {
+        e.preventDefault()
+        this.setState({
+            showNewCatModal: !this.state.showNewCatModal
+        })
+    }
+
 // creates our markers from fetched bodegas
     makeBodegaMarkers = () => {
     return this.state.bodegas.map((bodega) => 
@@ -63,17 +74,12 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
-    newCatForm = (e) =>{
-        e.preventDefault()
-        console.log("A new cat button was pressed. This should trigger a new modal with an form that takes a name and has a pre-set bodega id to post a new cat on submit")
-    }
-
     render() {
         return (
             <div>
             <ReactModal 
                 isOpen={this.state.showModal}
-                contentLabel="Log A Cat Modal"
+                contentLabel="Log A Sighting Modal"
                 shouldFocusAfterRender={true}
                 shouldCloseOnEsc={true}
                 shouldCloseOnOverlayClick={true}
@@ -82,6 +88,18 @@ export default class BodegaContainer extends React.Component {
                     Back To Map
                 </button>
                 <LogASighting selectedBodega={this.state.selectedBodega}/>
+            </ReactModal>
+            <ReactModal
+                isOpen={this.state.showNewCatModal}
+                contentLabel="Log A New Cat Modal"
+                    shouldFocusAfterRender={true}
+                    shouldCloseOnEsc={true}
+                    shouldCloseOnOverlayClick={true}
+            >
+                    <button onClick={(e) => this.newCatModalClick(e)}>
+                        Back To Map
+                </button>
+                <NewCatForm />
             </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
@@ -112,7 +130,7 @@ export default class BodegaContainer extends React.Component {
                             } 
                             </ul>
                                 <button className="logSightingButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
-                                <button className="logCatButton" onClick={(e) => this.newCatForm(e)}>Log A New Cat</button>
+                                <button className="logCatButton" onClick={(e) => this.newCatModalClick(e)}>Log A New Cat</button>
                             </div>
                         </Popup>
                     )
