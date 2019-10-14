@@ -77,7 +77,7 @@ export default class BodegaContainer extends React.Component {
                 <button onClick={(e) => this.handleModalClick(e)}>
                     Back To Map
                 </button>
-                <LogASighting />
+                <LogASighting selectedBodega={this.state.selectedBodega}/>
             </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
