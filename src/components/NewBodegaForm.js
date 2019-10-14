@@ -10,8 +10,8 @@ const validationSchema = Yup.object().shape({
     .max(50, "Names must be shorter than 50 characters")
     .required("Must enter a name"),
     address: Yup.string()
-    .max(50, "Names must be shorter than 50 characters")
-    .required("Must enter an address")
+    .max(50, "Addresses must be shorter than 50 characters")
+    .required("You must enter an address")
 })
 
 export default function NewBodegaForm() {
