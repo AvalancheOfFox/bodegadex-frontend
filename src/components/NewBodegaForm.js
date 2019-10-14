@@ -20,8 +20,15 @@ export default function NewBodegaForm() {
         initialValues={{name:"", latitude:"", longitude:""}}
         validationSchema = { validationSchema }
         >
-            {({values, errors, touched, handleChange, handleBlur}) => 
-            <form>
+            {({
+                values, 
+                errors, 
+                touched, 
+                handleChange, 
+                handleBlur, 
+                handleSubmit, 
+                isSubmitting}) => 
+            <form onSubmit={handleSubmit}>
                 <div className="input-row">
                     <label htmlFor="name">name</label>
                     <Field
@@ -42,7 +49,7 @@ export default function NewBodegaForm() {
                         <Error touched={touched.address} message={errors.address} />
                 </div>
                 <div className="input-row">
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={isSubmitting}>Submit</button>
                 </div>
             </form>
         }

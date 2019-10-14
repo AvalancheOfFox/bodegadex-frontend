@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
-
+let catsURL = `http://localhost:3000/cats`
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -13,14 +13,39 @@ const validationSchema = Yup.object().shape({
 
 export default function NewCatForm(props){
 
-    console.log(props)
+    console.log(props.selectedCats)
 
     return(
         <Formik initialValues={{name: "", bodega_id: props.selectedBodega.id}}
         validationSchema={validationSchema}
+        onSubmit={(values,{setSubmitting, resetForm}) => {
+            setSubmitting(true);
+            const config = {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cat: values })
+                }
+                alert(JSON.stringify(values, null, 1))
+            fetch(catsURL, config).then(r => r.json()).then(newCatObj => {
+                console.log(newCatObj)
+                props.selectedCats.push(newCatObj)
+            })
+            resetForm()
+            setSubmitting(false);
+        }}
         >
-            {({ values, errors, touched, handleChange, handleBlur }) => (
-            <form>
+            {({ 
+                values, 
+                errors, 
+                touched, 
+                handleChange, 
+                handleBlur,
+                handleSubmit, 
+                isSubmitting }) => (
+            <form onSubmit={handleSubmit}>
                 {JSON.stringify(values)}
                 <div className = "input-row">
                     <label htmlFor="name">Congrats! You've met a new cat. What's their name?</label>
@@ -33,7 +58,7 @@ export default function NewCatForm(props){
                 </div>
 
                 <div className="input-row">
-                    <button onClick={(e, values) => props.handleCatFormSubmit(e, values)}>Submit</button>
+                    <button type="submit" disabled={isSubmitting}>Submit</button>
                 </div>
             </form>
             )} 

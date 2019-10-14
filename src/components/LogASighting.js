@@ -23,8 +23,16 @@ export default function LogASighting(props){
         <Formik
         initialValues={{ cat_id: "", bodega_id: bodega_id, description: "" }}
         validationSchema = { validationSchema }>
-        {({values, errors, touched, handleChange, handleBlur}) => (
-                <form>
+        {({
+            values, 
+            errors, 
+            touched, 
+            handleChange, 
+            handleBlur, 
+            handleSubmit,
+            isSubmitting
+        }) => (
+                <form onSubmit={handleSubmit}>
                     {JSON.stringify(values)}
                     <div className="input-row">
                         <label htmlFor="cat_id">Cat You Encountered</label>
@@ -48,7 +56,7 @@ export default function LogASighting(props){
                         <Error touched={touched.description} message={errors.description} />
                     </div>
                     <div className="input-row">
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={isSubmitting}>Submit</button>
                     </div>
                 </form>
         )} 
