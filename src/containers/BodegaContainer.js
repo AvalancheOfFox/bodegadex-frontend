@@ -10,6 +10,8 @@ import LogASighting from '../components/LogASighting'
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
+        sightings: [],
+        cats: [],
         selectedBodega: null,
         showModal: false
     }
@@ -91,6 +93,12 @@ export default class BodegaContainer extends React.Component {
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
                                 <h5>Cats!</h5>
                                 <ul>{(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => cat.name) : <p>This store has no cats.</p>}</ul>
+                                <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
+                                    return <p>{sighting.description}</p>
+                                }
+                                    ) : <p>There have been no sightings here.</p>
+                            } 
+                            </ul>
                                 <button className="logButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
                             </div>
                         </Popup>
