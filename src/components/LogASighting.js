@@ -8,7 +8,7 @@ export default function LogASighting(props){
     const bodega_id = props.selectedBodega.id
     return(
         
-    <Formik initialValues={{cat_id: "", bodega_id: bodega_id, description: "", color: ""}}>
+    <Formik initialValues={{cat_id: "", bodega_id: bodega_id, description: ""}}>
         {({values, errors, touched, handleChange, handleBlur}) => (
                 <form>
                     {JSON.stringify(values)}
