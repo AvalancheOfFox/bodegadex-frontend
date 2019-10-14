@@ -68,3 +68,18 @@ button {
   max-width: 250px;
   max-height: 250px;
 }
+
+.form-message {
+  font-size: 10px;
+  padding-top: 2px;
+}
+.form-message.valid {
+  color: #4caf50;
+}
+.form-message.invalid {
+  color: #f44336;
+}
+
+.has-errors {
+  border: 1px solid #f44336;
+}

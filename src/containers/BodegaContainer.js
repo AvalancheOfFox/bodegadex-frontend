@@ -5,6 +5,9 @@ import ReactModal from 'react-modal';
 import LogASighting from '../components/LogASighting'
 import NewCatForm from '../components/NewCatForm'
 
+let catsURL = `http://localhost:3000/cats`
+let sightingsURL = `http://localhost:3000/sightings`
+
 
 
 
@@ -74,6 +77,21 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
+    handleCatFormSubmit = (e, values) =>{
+        debugger
+        e.preventDefault()
+        const config ={
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ values })
+        }
+        fetch(catsURL, config).then(r => r.json()).then(data => console.log(data))
+    }
+
+
     render() {
         return (
             <div>
@@ -99,7 +117,7 @@ export default class BodegaContainer extends React.Component {
                     <button onClick={(e) => this.newCatModalClick(e)}>
                         Back To Map
                 </button>
-                <NewCatForm />
+                    <NewCatForm selectedBodega={this.state.selectedBodega} handleCatFormSubmit={this.handleCatFormSubmit}/>
             </ReactModal>
            <div>{this.makeBodegaMarkers()}
                 {
