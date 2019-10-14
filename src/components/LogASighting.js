@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
 
 
-export default function LogASighting(){
-   
+export default function LogASighting(props){
+    
+    console.log(props)
+    const bodega_id = props.selectedBodega.id
     return(
-    <Formik initialValues={{name:"", bodega: ""}}>
+        
+    <Formik initialValues={{cat_id: "", bodega_id: bodega_id, description: ""}}>
         {({values, errors, touched, handleChange, handleBlur}) => (
                 <form>
                     {JSON.stringify(values)}
-                    <label htmlFor="name">Cat Name</label>
                     <div className="input-row">
-                        <input type="text"
-                            name="name"
-                            id="name"
-                            placeholder="What's this kitty's name?"
+                        <label htmlFor="cat_id">Cat You Encountered</label>
+                        <Field
+                            component="select"
+                            name="cat_id"
                             onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.name}
-                        />
+                            >
+                                {props.selectedBodega.attributes.cats.map((cat) => {
+                                return  <option value={cat.id}>{cat.name}</option>
+                                })}
+                        </Field>
                     </div>
-                    <label htmlFor="bodega">Bodega Name</label>
                     <div className="input-row">
-                        <input type="text"
-                            name="bodega"
-                            id="bodega"
-                            placeholder="What's this kitty's bodega?"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.bodega}
-                        />
+                        <label htmlFor="description">Description of your Encounter</label>
+                        <Field name="description" placeholder="Describe here!" />
                     </div>
                     <div className="input-row">
                         <button type="submit">Submit</button>
