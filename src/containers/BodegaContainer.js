@@ -10,8 +10,6 @@ import LogASighting from '../components/LogASighting'
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
-        sightings: [],
-        cats: [],
         selectedBodega: null,
         showModal: false
     }
@@ -65,6 +63,11 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
+    newCatForm = (e) =>{
+        e.preventDefault()
+        console.log("A new cat button was pressed. This should trigger a new modal with an form that takes a name and has a pre-set bodega id to post a new cat on submit")
+    }
+
     render() {
         return (
             <div>
@@ -73,6 +76,7 @@ export default class BodegaContainer extends React.Component {
                 contentLabel="Log A Cat Modal"
                 shouldFocusAfterRender={true}
                 shouldCloseOnEsc={true}
+                shouldCloseOnOverlayClick={true}
             >
                 <button onClick={(e) => this.handleModalClick(e)}>
                     Back To Map
@@ -86,7 +90,9 @@ export default class BodegaContainer extends React.Component {
                             latitude={this.state.selectedBodega.attributes.latitude}
                             longitude={this.state.selectedBodega.attributes.longitude}
                             closeButton={true}
+                            // closeOnClick and closeOnEsc seem to be nonresponsive?
                             closeOnClick={false}
+                            shouldCloseOnEsc={true}
                             onClose={() => this.clearSelected()}
                         >
                             <div>
@@ -105,11 +111,13 @@ export default class BodegaContainer extends React.Component {
                                     ) : <p>There have been no sightings here.</p>
                             } 
                             </ul>
-                                <button className="logButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
+                                <button className="logSightingButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
+                                <button className="logCatButton" onClick={(e) => this.newCatForm(e)}>Log A New Cat</button>
                             </div>
                         </Popup>
                     )
-                }</div>
+                }
+                </div>
             </div>
         );
     }
