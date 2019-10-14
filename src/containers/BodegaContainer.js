@@ -94,7 +94,12 @@ export default class BodegaContainer extends React.Component {
                                 <h5>Cats!</h5>
                                 <ul>{(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => cat.name) : <p>This store has no cats.</p>}</ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
-                                    return <p>{sighting.description}</p>
+                                    return <div>
+                                                <h3>Encountered Cats</h3>
+                                                <img src={sighting.img}></img>
+
+                                                <p>Description of this encounter: {sighting.description}</p>
+                                            </div>
                                 }
                                     ) : <p>There have been no sightings here.</p>
                             } 
