@@ -21,7 +21,14 @@
   color: #09d3ac;
 }
 
-.bodegaIcon{
+button.bodegaIcon img{
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+button.bodegaIcon {
   background: none;
   border: none;
   cursor: pointer;
@@ -55,4 +62,9 @@ button {
   background: none;
   border: 1px solid #607d8b;
   cursor: pointer;
+}
+
+.cat-img{
+  max-width: 250px;
+  max-height: 250px;
 }

@@ -14,9 +14,11 @@ export default class ButtonContainer extends Component {
 
 
         return(
-            <div>
+            
+                <span>
                 <button onClick={(e) => this.logNewBodega(e)} >Log A New Bodega</button>
-            </div>
+                </span>
+          
 
         )
     }
