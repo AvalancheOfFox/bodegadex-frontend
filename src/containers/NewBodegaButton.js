@@ -34,13 +34,6 @@ export default class NewBodegaButton extends Component {
     //     })
     // }
 
-    handleNewBodegaSubmit = (e) => {
-        e.preventDefault()
-        console.log(this.props.lat, "this is lat")
-        console.log(this.props.long, "this is long")
-
-        // fetch(`http://localhost:3000/bodegas`)
-    }
 
     
     render(){
@@ -56,7 +49,7 @@ export default class NewBodegaButton extends Component {
             >
                     <button onClick={(e) => this.flipModalClick(e)}>
                     Back To Map</button>
-                    <NewBodegaForm handleNewBodegaSubmit={this.handleNewBodegaSubmit} latitude={this.props.lat} longitude={this.props.long}/>
+                    <NewBodegaForm latitude={this.props.lat} longitude={this.props.long}/>
             </ReactModal>
                 <span onClick={(e) => this.flipModalClick(e)} >
                 Log A New Bodega

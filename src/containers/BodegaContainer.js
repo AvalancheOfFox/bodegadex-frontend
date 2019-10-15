@@ -5,12 +5,6 @@ import ReactModal from 'react-modal';
 import LogASighting from '../components/LogASighting'
 import NewCatForm from '../components/NewCatForm'
 
-
-let sightingsURL = `http://localhost:3000/sightings`
-
-
-
-
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
@@ -76,7 +70,6 @@ export default class BodegaContainer extends React.Component {
             selectedBodega: null
         })
     }
-
 
     render() {
         return (

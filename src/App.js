@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import BodegaContainer from './containers/BodegaContainer';
 import './App.css';
 import NewBodegaButton from './containers/NewBodegaButton';
+import ShowCenter from '../src/components/ShowCenter'
 
 
 
@@ -16,6 +17,8 @@ export default function App() {
     height: '100vh',
     width: '100vw'
   })
+
+  {/* <ShowCenter latitude={viewport.latitude} longitude={viewport.longitude}/> */}
  
  
   return (
