@@ -91,3 +91,11 @@ button {
   position: relative;
   text-align: center;
 }
+
+img#crosshairs{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%)
+}

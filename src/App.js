@@ -18,11 +18,12 @@ export default function App() {
     width: '100vw'
   })
 
-  {/* <ShowCenter latitude={viewport.latitude} longitude={viewport.longitude}/> */}
+  
  
  
   return (
     <div>
+      
       <NewBodegaButton lat={viewport.latitude} long={viewport.longitude}/>
       <ReactMapGL
       {...viewport}
@@ -32,6 +33,7 @@ export default function App() {
         setViewport(viewport)
         }
         }> 
+      <ShowCenter latitude={viewport.latitude} longitude={viewport.longitude} /> 
       <BodegaContainer/>  
     </ReactMapGL>
     </div>
