@@ -25,7 +25,7 @@ export default class NewBodegaButton extends Component {
     
     render(){
         return(
-            <div>
+            <div className="newBodegaSpan">
             <ReactModal
                 isOpen={this.state.showModal}
                 contentLabel="Log New Bodega Modal"
@@ -37,8 +37,8 @@ export default class NewBodegaButton extends Component {
                     Back To Map</button>
                     <NewBodegaForm />
             </ReactModal>
-                <span>
-                <button onClick={(e) => this.logNewBodega(e)} >Log A New Bodega</button>
+                <span onClick={(e) => this.logNewBodega(e)} >
+               Log A New Bodega
                 </span>
             </div>
 

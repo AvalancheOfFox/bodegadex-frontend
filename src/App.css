@@ -83,3 +83,11 @@ button {
 .has-errors {
   border: 1px solid #f44336;
 }
+
+.newBodegaSpan{
+  width: 100%;
+  background-color: #f44336;
+  align-content: center;
+  position: relative;
+  text-align: center;
+}
