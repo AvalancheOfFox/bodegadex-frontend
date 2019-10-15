@@ -47,7 +47,7 @@ export default function LogASighting(props){
                 alert(JSON.stringify(values, null, 1))
                 fetch(sightingsURL, config).then(r => r.json()).then(newSightingObj => {
                     console.log(newSightingObj)
-                    // props.selectedSightings.push(newSightingObj)
+                    props.selectedBodega.attributes.sightings.push(newSightingObj)
                 })
                 resetForm()
                 setSubmitting(false);
