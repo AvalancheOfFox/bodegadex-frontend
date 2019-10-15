@@ -20,7 +20,7 @@ export default function App() {
  
   return (
     <div>
-      <NewBodegaButton/>
+      <NewBodegaButton lat={viewport.latitude} long={viewport.longitude}/>
       <ReactMapGL
       {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
