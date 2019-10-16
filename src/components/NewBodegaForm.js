@@ -2,23 +2,49 @@ import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
-
+// import Geocoder from "react-geocode";
+const bodegaURL = `http://localhost:3000/bodegas`
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
     .min(1, "Name must be at least one character.")
     .max(50, "Names must be shorter than 50 characters")
     .required("Must enter a name"),
-    address: Yup.string()
-    .max(50, "Addresses must be shorter than 50 characters")
-    .required("You must enter an address")
 })
 
-export default function NewBodegaForm() {
+export default function NewBodegaForm(props) {
+    console.log(props)
+    console.log(props.latitude)
     return(
         <Formik
-        initialValues={{name:"", latitude:"", longitude:""}}
+        initialValues={{name:"", latitude: props.latitude, longitude: props.longitude}}
         validationSchema = { validationSchema }
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+                debugger
+                setSubmitting(true);
+                const config = {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: values.name,
+                        latitude: props.latitude,
+                        longitude: props.longitude   
+                    })
+                }
+                alert(JSON.stringify(values, null, 1))
+                fetch(bodegaURL, config).then(r => r.json()).then(newBodegaObj => {
+                    debugger
+                    console.log(newBodegaObj)
+
+                })
+                resetForm()
+                setSubmitting(false);
+            }
+
+            }
         >
             {({
                 values, 
@@ -28,7 +54,8 @@ export default function NewBodegaForm() {
                 handleBlur, 
                 handleSubmit, 
                 isSubmitting}) => 
-            <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
+                {JSON.stringify(values)}
                 <div className="input-row">
                     <label htmlFor="name">name</label>
                     <Field
@@ -39,18 +66,13 @@ export default function NewBodegaForm() {
                         <Error touched={touched.name} message={errors.name} />
                 </div>
 
-                <div className="input-row">
-                    <label htmlFor="address">Address</label>
-                    <Field
-                    name="address"
-                    placeholder="Address Here"
-                            className={touched.address && errors.address ? "has-errors" : null}
-                    />
-                        <Error touched={touched.address} message={errors.address} />
+                <div>
+                    <p>You're currently creating a new bodega at {props.latitude} degrees lat and {props.longitude} degrees long.</p>
                 </div>
+
                 <div className="input-row">
                     <button type="submit" disabled={isSubmitting}>Submit</button>
-                </div>
+                </div> 
             </form>
         }
         </Formik>

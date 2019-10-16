@@ -1,15 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import shopImg from "../svgs/xyz.svg";
 import ReactModal from 'react-modal'; 
 import LogASighting from '../components/LogASighting'
 import NewCatForm from '../components/NewCatForm'
-
-
-let sightingsURL = `http://localhost:3000/sightings`
-
-
-
 
 export default class BodegaContainer extends React.Component {
     state = {
@@ -77,7 +71,6 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
-
     render() {
         return (
             <div>
@@ -117,15 +110,16 @@ export default class BodegaContainer extends React.Component {
                             shouldCloseOnEsc={true}
                             onClose={() => this.clearSelected()}
                         >
-                            <div>
+                                <div className="bodegaCard">
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
                                 <h5>Cats!</h5>
-                                <ul>{(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => <p>{cat.name}</p>) : <p>This store has no cats.</p>}</ul>
+                                <ul>
+                                {(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => <p className="catName">{cat.name}</p>) : <p>This store has no cats.</p>}</ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
                                     return <div>
                                                 <h5>Encounters</h5>
                                                 <div>
-                                                <img src={sighting.img} className="cat-img"></img>
+                                                <img src={sighting.img} className="cat-img" alt="The cat that was encountered"></img>
                                                 <p>Description of this encounter: {sighting.description}</p>
                                                 </div>
                                             </div>

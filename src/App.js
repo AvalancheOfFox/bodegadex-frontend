@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL from 'react-map-gl';
 import BodegaContainer from './containers/BodegaContainer';
 import './App.css';
 import NewBodegaButton from './containers/NewBodegaButton';
+import ShowCenter from '../src/components/ShowCenter'
 
 
 
@@ -16,11 +17,14 @@ export default function App() {
     height: '100vh',
     width: '100vw'
   })
+
+  
  
  
   return (
     <div>
-      <NewBodegaButton/>
+      
+      <NewBodegaButton lat={viewport.latitude} long={viewport.longitude}/>
       <ReactMapGL
       {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -29,6 +33,7 @@ export default function App() {
         setViewport(viewport)
         }
         }> 
+      <ShowCenter latitude={viewport.latitude} longitude={viewport.longitude} /> 
       <BodegaContainer/>  
     </ReactMapGL>
     </div>
