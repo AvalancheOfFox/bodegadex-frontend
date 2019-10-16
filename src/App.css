@@ -49,15 +49,25 @@ button {
 
 .bodegaCard h3{
   text-align: center;
+  text-decoration-style: wavy;
+  padding: 5px;
+  color: #FFFFFF;
+  font-family: 'Josefin Sans', sans-serif
+}
+
+.bodegaCard h4{
+  text-align: center;
   padding: 5px;
   color: #FFFFFF;
   font-family: 'Josefin Sans', sans-serif
 }
 
 .bodegaCard ul{
-  padding: 2px;
   text-align: center;
   background-color: #FFFFFF;
+  border-radius: 3px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .bodegaCard#bodegaNameDisplay{
