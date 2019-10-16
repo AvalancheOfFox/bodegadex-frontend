@@ -19,23 +19,6 @@ export default class NewBodegaButton extends Component {
         })
     }
 
-    // handleNewBodegaSubmit = (e) => {
-    //     e.preventDefault()
-    //     let address = e.target[1].attributes.value.value
-    //     console.log(e, "this is e")
-    //     console.log(address, "this is e.target[1]attributes.value")
-
-    //     debugger
-    //     fetch(geocoderApi + `${address}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         debugger
-    //         console.log(data)
-    //     })
-    // }
-
-
-    
     render(){
         return(
             <div className="newBodegaSpan">
