@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import NewBodegaForm from '../components/NewBodegaForm'
-import App from '../App';
-
-let geocoderApi = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
 
 export default class NewBodegaButton extends Component {
 

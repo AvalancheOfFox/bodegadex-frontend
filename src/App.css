@@ -57,12 +57,12 @@ div.mapboxgl-popup-content{
 
 .bodegaCard h3{
   text-align: center;
-  align-content: center;
-  text-decoration-style: wavy;
+  display: block;
   padding: 5px;
+  margin: 10px;
   color: #FFFFFF;
   font-family: 'Josefin Sans', sans-serif;
-  text-shadow: 0px 0px 2px grey;
+  text-shadow: 0px 0px 4px grey;
 }
 
 .bodegaCard h4{

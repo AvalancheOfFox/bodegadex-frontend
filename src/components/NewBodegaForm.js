@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl'
+import React from 'react';
+import { Marker, Popup } from 'react-map-gl'
 import shopImg from "../svgs/xyz.svg";
 import ReactModal from 'react-modal'; 
 import LogASighting from '../components/LogASighting'
@@ -71,6 +71,12 @@ export default class BodegaContainer extends React.Component {
         })
     }
 
+    handleDeleteCat = (e) => {
+        console.log(e, "this is e")
+        console.log(e.target, "this is e.target")
+        console.log("The skull emoji on a cat ul was clicked so now we're firing off what should be a delete request to the db.")
+    }
+
     render() {
         return (
             <div>
@@ -113,8 +119,12 @@ export default class BodegaContainer extends React.Component {
                                 <div className="bodegaCard">
                                 <h3>{this.state.selectedBodega.attributes.name}</h3>
                                 <h3>Cats!</h3>
-                                <ul>
-                                {(this.state.selectedBodega.attributes.cats.length > 0) ? this.state.selectedBodega.attributes.cats.map((cat) => <p className="catName">{cat.name}</p>) : <p>This store has no cats.</p>}</ul>
+                                <ul> 
+                                    {
+                                        (this.state.selectedBodega.attributes.cats.length > 0) ? 
+                                                this.state.selectedBodega.attributes.cats.map((cat) => <div><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
+                                        <p>This store has no cats.</p>}
+                                </ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
                                     return <div>
                                                 <h5>Encounter</h5>
