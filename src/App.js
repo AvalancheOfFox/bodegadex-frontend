@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL from 'react-map-gl';
 import BodegaContainer from './containers/BodegaContainer';
 import './App.css';
 import NewBodegaButton from './containers/NewBodegaButton';

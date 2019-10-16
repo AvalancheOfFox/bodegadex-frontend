@@ -57,11 +57,20 @@ input {
 }
 
 button {
-  border-radius: 0px;
+  border-radius: 3px;
   padding: 5px 15px;
   background: none;
   border: 1px solid #607d8b;
   cursor: pointer;
+}
+
+.bodegaCard{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: #f44336;
+}
+
+.bodegaCard#bodegaNameDisplay{
+  background-color: #09d3ac;
 }
 
 .cat-img{
@@ -95,6 +104,7 @@ button {
 img#crosshairs{
   display: block;
   position: absolute;
+  opacity: 25%;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%)

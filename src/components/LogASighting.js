@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
@@ -111,11 +111,3 @@ export default function LogASighting(props){
 }
 
 
-
-
-
-{/* <div>
-                                {/* this is where i need to add the button that will upload to firebase */}
-{/* <input type="file" onChange={fileSelectedHandler}/>
-                        <button onClick={handleFileUpload}>Upload</button>
-                    </div> */}
