@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
@@ -13,14 +13,12 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function NewBodegaForm(props) {
-    console.log(props)
-    console.log(props.latitude)
+    
     return(
         <Formik
         initialValues={{name:"", latitude: props.latitude, longitude: props.longitude}}
         validationSchema = { validationSchema }
         onSubmit={(values, { setSubmitting, resetForm }) => {
-                debugger
                 setSubmitting(true);
                 const config = {
                     method: "POST",
@@ -36,9 +34,7 @@ export default function NewBodegaForm(props) {
                 }
                 alert(JSON.stringify(values, null, 1))
                 fetch(bodegaURL, config).then(r => r.json()).then(newBodegaObj => {
-                    debugger
                     console.log(newBodegaObj)
-
                 })
                 resetForm()
                 setSubmitting(false);
@@ -51,7 +47,6 @@ export default function NewBodegaForm(props) {
                 errors, 
                 touched, 
                 handleChange, 
-                handleBlur, 
                 handleSubmit, 
                 isSubmitting}) => 
                 <form onSubmit={handleSubmit}>

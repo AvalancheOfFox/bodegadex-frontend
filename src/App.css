@@ -41,6 +41,14 @@ button {
   cursor: pointer;
 }
 
+.mapboxgl-popup{
+  background-color: none;
+}
+
+div.mapboxgl-popup-content{
+  background: none;
+}
+
 .bodegaCard{
     background-color: #AFD6D6;
     border-radius: 5px;
@@ -49,15 +57,27 @@ button {
 
 .bodegaCard h3{
   text-align: center;
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  color: #FFFFFF;
+  font-family: 'Josefin Sans', sans-serif;
+  text-shadow: 0px 0px 4px grey;
+}
+
+.bodegaCard h4{
+  text-align: center;
   padding: 5px;
   color: #FFFFFF;
   font-family: 'Josefin Sans', sans-serif
 }
 
 .bodegaCard ul{
-  padding: 2px;
   text-align: center;
   background-color: #FFFFFF;
+  border-radius: 3px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .bodegaCard#bodegaNameDisplay{
