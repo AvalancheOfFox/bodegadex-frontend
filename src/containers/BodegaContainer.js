@@ -87,6 +87,11 @@ export default class BodegaContainer extends React.Component {
         console.log("The skull emoji on a cat ul was clicked so now we're firing off what should be a delete request to the db.")
     }
 
+    findEncounteredCat = (id) =>{
+       let encounteredCat = (this.state.cats.find((cat) => cat.id == id))
+       return encounteredCat.attributes.name
+    }
+
 
 
     render() {
@@ -141,7 +146,7 @@ export default class BodegaContainer extends React.Component {
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
                                     return <div>
                                         {console.log(sighting)}
-                                                <h5>Encounter with {sighting.cat}</h5>
+                                                <h5>Encounter with {this.findEncounteredCat(sighting.cat_id)}</h5>
                                                 <img src={sighting.img} className="cat-img" alt="The cat that was encountered"></img>
                                                 <p>Description of this encounter: {sighting.description}</p>
                                             </div>
