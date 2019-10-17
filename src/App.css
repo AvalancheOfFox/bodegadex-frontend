@@ -41,8 +41,14 @@ button {
   cursor: pointer;
 }
 
+div.mapboxgl-popup-content{
+  overflow-x: scroll;
+}
 .mapboxgl-popup{
   background-color: none;
+  height: 500px;
+  overflow: auto;
+  overflow-x: scroll;
 }
 
 div.mapboxgl-popup-content{
@@ -120,8 +126,9 @@ img#crosshairs{
   width: 75px;
   display: block;
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.7;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%)
 }
+

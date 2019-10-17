@@ -114,6 +114,7 @@ export default class BodegaContainer extends React.Component {
                             // closeOnClick and closeOnEsc seem to be nonresponsive?
                             closeOnClick={false}
                             shouldCloseOnEsc={true}
+                            shouldFocusAfterRender={true}
                             onClose={() => this.clearSelected()}
                         >
                                 <div className="bodegaCard">
