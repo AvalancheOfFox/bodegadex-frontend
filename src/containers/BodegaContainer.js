@@ -123,7 +123,7 @@ export default class BodegaContainer extends React.Component {
                                 <ul> 
                                     {
                                         (this.state.selectedBodega.attributes.cats.length > 0) ? 
-                                                this.state.selectedBodega.attributes.cats.map((cat) => <div><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
+                                                this.state.selectedBodega.attributes.cats.map((cat) => <div id={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
                                         <p>This store has no cats.</p>}
                                 </ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
@@ -136,8 +136,10 @@ export default class BodegaContainer extends React.Component {
                                     ) : <p>There have been no sightings here.</p>
                             } 
                             </ul>
+                            <div className="buttonContainer">
                                 <button className="logSightingButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
                                 <button className="logCatButton" onClick={(e) => this.newCatModalClick(e)}>Log A New Cat</button>
+                            </div>
                             </div>
                         </Popup>
                     )
