@@ -8,6 +8,7 @@ import NewCatForm from '../components/NewCatForm'
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
+        cats: [],
         selectedBodega: null,
         showModal: false,
         showNewCatModal: false
@@ -19,6 +20,15 @@ export default class BodegaContainer extends React.Component {
         .then(res => res.json())
         .then(data => this.setState({
             bodegas: data.data
+        }), this.fetchCats())
+    }
+
+    // fetches cats and adds to state
+    fetchCats = () => {
+        fetch(`http://localhost:3000/cats`)
+        .then(r => r.json())
+        .then(data => this.setState({
+            cats: data.data
         }))
     }
 
@@ -77,6 +87,11 @@ export default class BodegaContainer extends React.Component {
         console.log("The skull emoji on a cat ul was clicked so now we're firing off what should be a delete request to the db.")
     }
 
+    findEncounteredCat = (id) =>{
+       let encounteredCat = (this.state.cats.find((cat) => cat.id == id))
+       return encounteredCat.attributes.name
+    }
+
     render() {
         return (
             <div>
@@ -114,6 +129,7 @@ export default class BodegaContainer extends React.Component {
                             // closeOnClick and closeOnEsc seem to be nonresponsive?
                             closeOnClick={false}
                             shouldCloseOnEsc={true}
+                            shouldFocusAfterRender={true}
                             onClose={() => this.clearSelected()}
                         >
                                 <div className="bodegaCard">
@@ -122,21 +138,23 @@ export default class BodegaContainer extends React.Component {
                                 <ul> 
                                     {
                                         (this.state.selectedBodega.attributes.cats.length > 0) ? 
-                                                this.state.selectedBodega.attributes.cats.map((cat) => <div><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
+                                                this.state.selectedBodega.attributes.cats.map((cat) => <li className="catListItem" key={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span className="deleteSkull" role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></li>):
                                         <p>This store has no cats.</p>}
                                 </ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
-                                    return <div>
-                                                <h5>Encounter</h5>
+                                    return <div className="encounterCard" key={sighting.id}>
+                                                <h5>Encounter with {this.findEncounteredCat(sighting.cat_id)}</h5>
                                                 <img src={sighting.img} className="cat-img" alt="The cat that was encountered"></img>
-                                                <p>Description of this encounter: {sighting.description}</p>
+                                                <p>Description: {sighting.description}</p>
                                             </div>
                                 }
                                     ) : <p>There have been no sightings here.</p>
                             } 
                             </ul>
+                            <div className="buttonContainer">
                                 <button className="logSightingButton" onClick={(e) => this.handleModalClick(e)}>Log A New Sighting!</button>
                                 <button className="logCatButton" onClick={(e) => this.newCatModalClick(e)}>Log A New Cat</button>
+                            </div>
                             </div>
                         </Popup>
                     )

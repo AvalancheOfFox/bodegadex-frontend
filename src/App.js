@@ -18,9 +18,7 @@ export default function App() {
     width: '100vw'
   })
 
-  
- 
- 
+
   return (
     <div>
       
