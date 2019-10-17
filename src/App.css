@@ -56,6 +56,11 @@ div.mapboxgl-popup-content{
   background: none;
 }
 
+button.mapboxgl-popup-close-button{
+    right: 3px;
+    top: 15px;
+}
+
 .bodegaCard{
     background-color: #AFD6D6;
     border-radius: 5px;
@@ -68,9 +73,9 @@ div.mapboxgl-popup-content{
   display: block;
   padding: 5px;
   margin: 10px;
-  color: #FFFFFF;
+  color: rgb(0, 0, 0);
   font-family: 'Josefin Sans', sans-serif;
-  text-shadow: 0px 0px 4px grey;
+  text-shadow: 0px 0px 1px lightgrey;
 }
 
 .bodegaCard h4{
@@ -82,7 +87,7 @@ div.mapboxgl-popup-content{
 
 .bodegaCard ul{
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #AFD6D6;
   border-radius: 3px;
   padding: 2px;
   margin: 2px;
@@ -135,17 +140,39 @@ img#crosshairs{
 }
 
 div.buttonContainer{
-  display: table;
+  width: 100%;
 
 
 }
 
-div.buttonContainer, button{
-  display: table-cell;
+div.buttonContainer button{
   width: 50%;
+  font-family: 'Josefin Sans', sans-serif;
+  box-shadow: 0px 0px 5px black; 
 }
 
 .catListItem{
-  display: block;
+  display: inline-flex;
+  background-color: #ffa407;
+  border-radius: 5px;
+  margin: 1px;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 3px black; 
+
 }
 
+.encounterCard {
+  border-radius: 5px;
+  background-color: #ffa407;
+  box-shadow: 0px 0px 7px black; 
+  font-family: 'Josefin Sans', sans-serif;
+  /* text-shadow: 0px 0px 4px grey; */
+}
+
+span.deleteSkull{
+  display: inline-block;
+  cursor: pointer;
+  text-shadow: #4caf50;
+}

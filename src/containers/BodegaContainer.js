@@ -92,8 +92,6 @@ export default class BodegaContainer extends React.Component {
        return encounteredCat.attributes.name
     }
 
-
-
     render() {
         return (
             <div>
@@ -140,15 +138,14 @@ export default class BodegaContainer extends React.Component {
                                 <ul> 
                                     {
                                         (this.state.selectedBodega.attributes.cats.length > 0) ? 
-                                                this.state.selectedBodega.attributes.cats.map((cat) => <div className="catListItem" id={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
+                                                this.state.selectedBodega.attributes.cats.map((cat) => <li className="catListItem" key={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span className="deleteSkull" role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></li>):
                                         <p>This store has no cats.</p>}
                                 </ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
-                                    return <div>
-                                        {console.log(sighting)}
+                                    return <div className="encounterCard" key={sighting.id}>
                                                 <h5>Encounter with {this.findEncounteredCat(sighting.cat_id)}</h5>
                                                 <img src={sighting.img} className="cat-img" alt="The cat that was encountered"></img>
-                                                <p>Description of this encounter: {sighting.description}</p>
+                                                <p>Description: {sighting.description}</p>
                                             </div>
                                 }
                                     ) : <p>There have been no sightings here.</p>
