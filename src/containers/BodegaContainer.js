@@ -8,6 +8,7 @@ import NewCatForm from '../components/NewCatForm'
 export default class BodegaContainer extends React.Component {
     state = {
         bodegas: [],
+        cats: [],
         selectedBodega: null,
         showModal: false,
         showNewCatModal: false
@@ -19,6 +20,15 @@ export default class BodegaContainer extends React.Component {
         .then(res => res.json())
         .then(data => this.setState({
             bodegas: data.data
+        }), this.fetchCats())
+    }
+
+    // fetches cats and adds to state
+    fetchCats = () => {
+        fetch(`http://localhost:3000/cats`)
+        .then(r => r.json())
+        .then(data => this.setState({
+            cats: data.data
         }))
     }
 
@@ -77,6 +87,8 @@ export default class BodegaContainer extends React.Component {
         console.log("The skull emoji on a cat ul was clicked so now we're firing off what should be a delete request to the db.")
     }
 
+
+
     render() {
         return (
             <div>
@@ -123,12 +135,13 @@ export default class BodegaContainer extends React.Component {
                                 <ul> 
                                     {
                                         (this.state.selectedBodega.attributes.cats.length > 0) ? 
-                                                this.state.selectedBodega.attributes.cats.map((cat) => <div id={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
+                                                this.state.selectedBodega.attributes.cats.map((cat) => <div className="catListItem" id={cat.id}><span role="img" aria-label="Cat Emoji">😻</span><p className="catName">{cat.name}</p><span role="img" aria-label="Delete Cat Emoji Button" onClick={(e) => this.handleDeleteCat(e)}>💀</span></div>):
                                         <p>This store has no cats.</p>}
                                 </ul>
                                 <ul>{(this.state.selectedBodega.attributes.sightings.length > 0) ? this.state.selectedBodega.attributes.sightings.map((sighting) => {
                                     return <div>
-                                                <h5>Encounter</h5>
+                                        {console.log(sighting)}
+                                                <h5>Encounter with {sighting.cat}</h5>
                                                 <img src={sighting.img} className="cat-img" alt="The cat that was encountered"></img>
                                                 <p>Description of this encounter: {sighting.description}</p>
                                             </div>
