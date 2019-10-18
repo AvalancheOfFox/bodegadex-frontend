@@ -34,7 +34,9 @@ export default function NewBodegaForm(props) {
                 }
                 alert(JSON.stringify(values, null, 1))
                 fetch(bodegaURL, config).then(r => r.json()).then(newBodegaObj => {
-                    console.log(newBodegaObj)
+                    console.log(newBodegaObj, "this ConLog comes from end of POST fetch in NewBodegaForm. If you were to uncomment the next line, you'd get an error onSubmit of undefined - can't read latitude of undef.")
+                    // props.handleNewBodegaSubmit(newBodegaObj)
+                    
                 })
                 resetForm()
                 setSubmitting(false);

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@mapbox/react-geocoder": "^2.5.0",
+    "animejs": "^3.1.0",
     "dotenv": "^8.1.0",
     "formik": "^1.5.8",
     "react": "^16.10.2",
