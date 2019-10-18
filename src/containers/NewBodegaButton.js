@@ -4,6 +4,8 @@ import NewBodegaForm from '../components/NewBodegaForm'
 
 export default class NewBodegaButton extends Component {
 
+   
+
     state ={
         showModal: false
     }
@@ -16,7 +18,10 @@ export default class NewBodegaButton extends Component {
         })
     }
 
+
+
     render(){
+        // console.log(this.props, 'props of NewBodegaButton')
         return(
             <div className="newBodegaSpan">
             <ReactModal
@@ -25,11 +30,11 @@ export default class NewBodegaButton extends Component {
                 shouldFocusAfterRender={true}
                 shouldCloseOnEsc={true}
                 shouldCloseOnOverlayClick={true}
-            
+                ariaHideApp={false}
             >
                     <button onClick={(e) => this.flipModalClick(e)}>
                     Back To Map</button>
-                    <NewBodegaForm latitude={this.props.lat} longitude={this.props.long}/>
+                    <NewBodegaForm handleNewBodegaSubmit={(obj) =>this.props.handleNewBodegaSubmit(obj)} latitude={this.props.lat} longitude={this.props.long}/>
             </ReactModal>
                 <span onClick={(e) => this.flipModalClick(e)} >
                 Log A New Bodega

@@ -4,6 +4,7 @@ import shopImg from "../svgs/xyz.svg";
 import ReactModal from 'react-modal'; 
 import LogASighting from '../components/LogASighting'
 import NewCatForm from '../components/NewCatForm'
+import NewBodegaButton from './NewBodegaButton';
 
 export default class BodegaContainer extends React.Component {
     state = {
@@ -49,8 +50,9 @@ export default class BodegaContainer extends React.Component {
     }
 
 // creates our markers from fetched bodegas
-    makeBodegaMarkers = () => {
+    makeBodegaMarkers = () => {        
     return this.state.bodegas.map((bodega) => 
+
             <Marker key={bodega.id}
                 latitude={bodega.attributes.latitude}
                 longitude={bodega.attributes.longitude}
@@ -92,10 +94,19 @@ export default class BodegaContainer extends React.Component {
        return encounteredCat.attributes.name
     }
 
+    handleNewBodegaSubmit = (obj) =>{
+        debugger
+        this.setState({
+            bodegas: [...this.state.bodegas, obj]
+        }, console.log("abc"))
+    }
+
+
     render() {
         return (
             <div>
-            <ReactModal 
+                <NewBodegaButton lat={this.props.latitude} long={this.props.longitude} handleNewBodegaSubmit={(obj) => this.handleNewBodegaSubmit(obj)}/>
+                <ReactModal 
                 isOpen={this.state.showModal}
                 contentLabel="Log A Sighting Modal"
                 shouldFocusAfterRender={true}
