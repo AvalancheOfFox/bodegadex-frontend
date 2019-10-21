@@ -21,6 +21,7 @@ See below screenshots to understand the basic functionality of the app.
 - [React](https://reactjs.org)
 - [MapBoxGL](https://docs.mapbox.com/mapbox-gl-js/api/)
 - [Formik](https://github.com/jaredpalmer/formik)
+- [Rails](https://rubyonrails.org/)
 
 ## Features
 Users can log new cats, new bodegas, and sightings of cats at bodegas. 
