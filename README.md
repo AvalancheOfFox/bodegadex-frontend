@@ -4,12 +4,6 @@ Bodega Cat Pokedex is an easy way for New Yorkers to log their encounters with e
 ## Motivation
 This project exists because I was constantly taking pictures of the bodega cats in my neighborhood and I wanted a central place to store these pictures, as well as associate them with the bodega where I took the picture. It also served as a good way to familiarize myself with MapboxGL. 
 
-## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
-
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
-
 ## Code style
 Code style is very loose standard at the moment though I may be refactoring to clean up in which case I will likely switch to a stricter typed style like XO. 
 
