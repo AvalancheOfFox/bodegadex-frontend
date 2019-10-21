@@ -58,7 +58,6 @@ export default function LogASighting(props){
             errors, 
             touched, 
             handleChange, 
-            handleBlur, 
             handleSubmit,
             isSubmitting
         }) => (
