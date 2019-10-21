@@ -24,7 +24,7 @@ export default function LogASighting(props){
 
     return(
         
-        <Formik initialValues={{ cat_id: "", bodega_id: bodega_id, description: "", img:""}}
+        <Formik initialValues={{ cat_id: `${props.selectedBodega.attributes.cats[0].id}`, bodega_id: bodega_id, description: "", img:""}}
         validationSchema = { validationSchema }
         onSubmit={(values,{setSubmitting, resetForm}) => {
             console.log("being hit")
@@ -58,7 +58,6 @@ export default function LogASighting(props){
             errors, 
             touched, 
             handleChange, 
-            handleBlur, 
             handleSubmit,
             isSubmitting
         }) => (
@@ -71,6 +70,7 @@ export default function LogASighting(props){
                         <Field
                             component="select"
                             name="cat_id"
+                            placeholder={props.selectedBodega.attributes.cats[0].id}
                             onChange={handleChange}
                             className={touched.cat_id && errors.cat_id ? "has-errors" : null}
                             >
