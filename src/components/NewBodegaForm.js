@@ -3,7 +3,7 @@ import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
 // import Geocoder from "react-geocode";
-const bodegaURL = `http://localhost:3000/bodegas`
+const bodegaURL = `https://thebodegacatpokedex.herokuapp.com/bodegas`
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -32,7 +32,7 @@ export default function NewBodegaForm(props) {
                         longitude: props.longitude   
                     })
                 }
-                alert(JSON.stringify(values, null, 1))
+                // alert(JSON.stringify(values, null, 1))
                 fetch(bodegaURL, config).then(r => r.json()).then(newBodegaObj => {
                     console.log(newBodegaObj, "this ConLog comes from end of POST fetch in NewBodegaForm. If you were to uncomment the next line, you'd get an error onSubmit of undefined - can't read latitude of undef.")
                     // props.handleNewBodegaSubmit(newBodegaObj)
@@ -52,7 +52,7 @@ export default function NewBodegaForm(props) {
                 handleSubmit, 
                 isSubmitting}) => 
                 <form onSubmit={handleSubmit}>
-                {JSON.stringify(values)}
+                {/* {JSON.stringify(values)} */}
                 <div className="input-row">
                     <label htmlFor="name">name</label>
                     <Field

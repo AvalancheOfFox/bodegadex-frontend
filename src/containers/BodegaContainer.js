@@ -17,7 +17,7 @@ export default class BodegaContainer extends React.Component {
 
 // initial fetch to backend to get bodegas
     componentDidMount() {
-        fetch(`http://localhost:3000/bodegas`)
+        fetch(`https://thebodegacatpokedex.herokuapp.com/bodegas`)
         .then(res => res.json())
         .then(data => this.setState({
             bodegas: data.data
@@ -26,7 +26,7 @@ export default class BodegaContainer extends React.Component {
 
     // fetches cats and adds to state
     fetchCats = () => {
-        fetch(`http://localhost:3000/cats`)
+        fetch(`https://thebodegacatpokedex.herokuapp.com/cats`)
         .then(r => r.json())
         .then(data => this.setState({
             cats: data.data
@@ -98,7 +98,7 @@ export default class BodegaContainer extends React.Component {
         debugger
         this.setState({
             bodegas: [...this.state.bodegas, obj]
-        }, console.log("abc"))
+        })
     }
 
 

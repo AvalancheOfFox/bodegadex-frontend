@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
 
 export default function NewCatForm(props){
 
-    console.log(props.selectedCats)
+    // console.log(props.selectedCats)
 
     return(
         <Formik initialValues={{name: "", bodega_id: props.selectedBodega.id}}
@@ -28,9 +28,9 @@ export default function NewCatForm(props){
                 },
                 body: JSON.stringify({ cat: values })
                 }
-                alert(JSON.stringify(values, null, 1))
+                // alert(JSON.stringify(values, null, 1))
             fetch(catsURL, config).then(r => r.json()).then(newCatObj => {
-                console.log(newCatObj)
+                // console.log(newCatObj)
                 props.selectedCats.push(newCatObj)
             })
             resetForm()
@@ -46,7 +46,7 @@ export default function NewCatForm(props){
                 handleSubmit, 
                 isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-                {JSON.stringify(values)}
+                {/* {JSON.stringify(values)} */}
                 <div className = "input-row">
                     <label htmlFor="name">Congrats! You've met a new cat. What's their name?</label>
                     <Field
