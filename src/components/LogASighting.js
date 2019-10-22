@@ -3,7 +3,7 @@ import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
 
-let sightingsURL = `http://localhost:3000/sightings`
+let sightingsURL = `https://thebodegacatpokedex.herokuapp.com/sightings`
 
 const validationSchema = Yup.object().shape({
     cat_id: Yup.string()
@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LogASighting(props){
     
-    console.log(props)
+    // console.log(props)
     const bodega_id = props.selectedBodega.id
 
     return(
@@ -27,10 +27,10 @@ export default function LogASighting(props){
         <Formik initialValues={{ cat_id: `${props.selectedBodega.attributes.cats[0].id}`, bodega_id: bodega_id, description: "", img:""}}
         validationSchema = { validationSchema }
         onSubmit={(values,{setSubmitting, resetForm}) => {
-            console.log("being hit")
+            // console.log("being hit")
             debugger
             setSubmitting(true);
-            console.log(values)
+            // console.log(values)
                 const config = {
                     method: "POST",
                     headers: {
@@ -44,9 +44,9 @@ export default function LogASighting(props){
                         img: values.img
                         })
                 }
-                alert(JSON.stringify(values, null, 1))
+                // alert(JSON.stringify(values, null, 1))
                 fetch(sightingsURL, config).then(r => r.json()).then(newSightingObj => {
-                    console.log(newSightingObj)
+                    // console.log(newSightingObj)
                     props.selectedBodega.attributes.sightings.push(newSightingObj)
                 })
                 resetForm()
@@ -62,7 +62,7 @@ export default function LogASighting(props){
             isSubmitting
         }) => (
                 <form onSubmit={handleSubmit}>
-                    {JSON.stringify(values)}
+                    {/* {JSON.stringify(values)} */}
 
                     {/* cat_collection select */}
                     <div className="input-row">
