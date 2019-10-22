@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from "yup";
 import Error from '../components/Error';
-let catsURL = `http://localhost:3000/cats`
+let catsURL = `https://thebodegacatpokedex.herokuapp.com/cats`
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
